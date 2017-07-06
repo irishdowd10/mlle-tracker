@@ -9,6 +9,7 @@ import { Course } from './course.model';
 
   <course-list [childCourseList]="masterCourseList" (clickSender)="editCourse($event)"></course-list>
   <hr>
+  <h3>FOR ADMIN USE ONLY</h3>
   <edit-course [childSelectedCourse]="selectedCourse" (doneButtonClickedSender)="finishedEditing()"></edit-course>
   <new-course (newCourseSender) ="addCourse($event)"></new-course>
   </div>
@@ -31,7 +32,7 @@ export class AppComponent {
     new Course("5k Race", "Pavement", 3, 3),
     new Course("Newport Beach Loop", "Sand", 1, 4),
     new Course("City Block Run", "Pavement", 1, 8),
-    new Course("Weekend Long Run", "Pavement", 2, 16)
+    new Course("Weekend Long Run", "Pavement", 3, 16)
   ];
   selectedCourse = null;
 

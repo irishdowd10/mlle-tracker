@@ -5,15 +5,38 @@ import { Course } from './course.model';
   selector: 'course-list',
   template: `
     <h3>Total Miles: {{totalMiles}} / 40</h3>
+    <h3 *ngIf="totalMiles >= 40">You made your goal!</h3>
+    <h3 *ngIf="totalMiles < 40">You're not at the goal yet.</h3>
+
     <select (change)="onChange($event.target.value)">
       <option value="allCourses" selected="selected">All Courses</option>
       <option value="completedCourses">Completed Courses</option>
       <option value="incompleteCourses">Incomplete Courses</option>
     </select>
-    <ul>
-      <li [class]="priorityColor(currentCourse)" *ngFor="let currentCourse of childCourseList | status:filterByStatus">{{currentCourse.name}} | Mileage: {{currentCourse.mileage}} | {{currentCourse.type}} | <button (click)="editButtonHasBeenClicked(currentCourse)">Edit</button> |       <button *ngIf="currentCourse.haveRun === false" (click)="addMiles(currentCourse, true, currentCourse.mileage);">Run</button> </li>
-    </ul>
+    <br><br>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Mileage</th>
+        <th>Edit</th>
+        <th>Run!</th>
+      </tr>
+      <tr *ngFor="let currentCourse of childCourseList | status:filterByStatus">
+        <td>{{currentCourse.name}}</td>
+        <td>{{currentCourse.type}}</td>
+        <td>{{currentCourse.mileage}}</td>
+        <td><button (click)="editButtonHasBeenClicked(currentCourse)">Edit</button></td>
+        <td><button *ngIf="currentCourse.haveRun === false" (click)="addMiles(currentCourse, true, currentCourse.mileage);">Run</button></td>
+      </tr>
+    <table>
+    <br>
 
+    <h4>Recommended Runs</h4>
+    <li [class]="priorityColor(currentCourse)" *ngFor="let currentCourse of childCourseList | mileage:totalMiles:counter">{{currentCourse.name}} | Mileage: {{currentCourse.mileage}} | {{currentCourse.type}} | <button (click)="editButtonHasBeenClicked(currentCourse)">Edit</button> |       <button *ngIf="currentCourse.haveRun === false" (click)="addMiles(currentCourse, true, currentCourse.mileage);">Run</button> </li>
+    <br>
+
+    <h4>Previous Runs</h4>
     <ol>
       <li *ngFor="let currentCourse of childCourseList | status:filterByRun"> {{currentCourse.name}} | Mileage: {{currentCourse.mileage}}</li>
     </ol>

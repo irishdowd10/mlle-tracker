@@ -4,9 +4,10 @@ import { Course } from './course.model';
 @Component ({
   selector: 'new-course',
   template: `
-<h1> New Course </h1>
+  <hr>
+<h3> New Course </h3>
 <div>
-<h3> Enter Course Information</h3>
+<h4> Enter Course Information</h4>
 <label>Name</label>
 <input #newName>
 <label>Type</label>
