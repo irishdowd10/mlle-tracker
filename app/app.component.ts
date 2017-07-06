@@ -7,8 +7,10 @@ import { Course } from './course.model';
   <div class="container">
   <h1> Mile Tracker for {{month}}/{{day}}/{{year}}</h1>
 
-  <course-list [childCourseList]="masterCourseList"></course-list>
+  <course-list [childCourseList]="masterCourseList" (clickSender)="editCourse($event)"></course-list>
   <hr>
+  <edit-course [childSelectedCourse]="selectedCourse" (doneButtonClickedSender)="finishedEditing()"></edit-course>
+  <new-course (newCourseSender) ="addCourse($event)"></new-course>
   </div>
   `
 })
@@ -31,5 +33,18 @@ export class AppComponent {
     new Course("City Block Run", "Pavement", 1, 8),
     new Course("Weekend Long Run", "Pavement", 2, 16)
   ];
+  selectedCourse = null;
+
+  editCourse(clickedCourse) {
+    this.selectedCourse = clickedCourse;
+  }
+
+  finishedEditing() {
+    this.selectedCourse = null;
+  }
+
+  addCourse(newCourseFromChild: Course) {
+    this.masterCourseList.push(newCourseFromChild);
+  }
 
 }
