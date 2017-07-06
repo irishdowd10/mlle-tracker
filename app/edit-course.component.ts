@@ -7,7 +7,6 @@ import { Course } from './course.model';
   <div>
     <div *ngIf="childSelectedCourse">
       <h3>{{childSelectedCourse.name}}</h3>
-      <h3>{{childSelectedCourse.haveRun}}</h3>
       <h4>Edit Course</h4>
       <label>Course Name</label>
       <input [(ngModel)]="childSelectedCourse.name">

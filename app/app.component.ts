@@ -5,7 +5,10 @@ import { Course } from './course.model';
   selector: 'app-root',
   template: `
   <div class="container">
-  <h1> Mile Tracker for {{month}}/{{day}}/{{year}}</h1>
+    <div class="jumbotron">
+      <h1> Mile Tracker</h1>
+      <h3> Date: {{month}}/{{day}}/{{year}}</h3>
+    </div>
 
   <course-list [childCourseList]="masterCourseList" (clickSender)="editCourse($event)"></course-list>
   <hr>

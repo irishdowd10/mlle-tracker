@@ -14,7 +14,7 @@ import { Course } from './course.model';
       <option value="incompleteCourses">Incomplete Courses</option>
     </select>
     <br><br>
-    <table>
+    <table id="table">
       <tr>
         <th>Name</th>
         <th>Type</th>
@@ -29,7 +29,7 @@ import { Course } from './course.model';
         <td><button (click)="editButtonHasBeenClicked(currentCourse)">Edit</button></td>
         <td><button *ngIf="currentCourse.haveRun === false" (click)="addMiles(currentCourse, true, currentCourse.mileage);">Run</button></td>
       </tr>
-    <table>
+    </table>
     <br>
 
     <h4>Recommended Runs</h4>
