@@ -5,11 +5,12 @@ import { FormsModule }    from '@angular/forms';
 import { CourseListComponent } from './course-list.component';
 import { EditCourseComponent } from './edit-course.component';
 import { NewCourseComponent } from './new-course.component';
+import { StatusPipe } from './status.pipe';
 
 
 @NgModule({
   imports: [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, CourseListComponent, EditCourseComponent, NewCourseComponent ],
+  declarations: [ AppComponent, CourseListComponent, EditCourseComponent, NewCourseComponent, StatusPipe ],
   bootstrap:    [ AppComponent ]
 })
 
